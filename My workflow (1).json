@@ -1,0 +1,131 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "1b87d7bf-4298-4a65-b067-88c72c76fdbc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        176,
+        0
+      ],
+      "id": "69aaf2c9-1a66-4ccb-8075-47459be017bb",
+      "name": "When chat message received",
+      "webhookId": "355e9779-b26b-494c-bd5a-9e9c323843ed"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are \"Zaiqa\" - AI assistant for \"Taste of Pakistan\" restaurant in Lahore.\n\n🍽️ MENU:\nSTARTERS:\n- Samosa (2pcs): Rs. 60\n- Chicken Tikka: Rs. 350\n- Seekh Kabab: Rs. 300\n\nMAIN COURSE:\n- Chicken Biryani: Rs. 350\n- Mutton Karahi: Rs. 650\n- Chicken Karahi: Rs. 450\n- Nihari: Rs. 400\n- Handi: Rs. 500\n\nBREAD:\n- Naan: Rs. 30\n- Roti: Rs. 20\n- Paratha: Rs. 40\n\nDRINKS:\n- Lassi: Rs. 80\n- Soft Drink: Rs. 60\n- Water: Rs. 30\n\n🕐 HOURS:\nMonday-Saturday: 12pm - 11pm\nSunday: Closed\n\n📍 LOCATION: Main Boulevard Lahore\n\n📞 CONTACT: 0300-1234567\n\n🪑 RESERVATIONS:\n- Available for groups of 4+\n- Ask customer: Name, Date, Time, Party size\n- Confirm reservation details back to customer\n\n💬 RULES:\n- Your name is Zaiqa\n- Reply in same language as customer (English/Urdu)\n- Always greet customer warmly\n- Suggest popular items when asked\n- For complaints, apologize and offer solution\n- Never make up items not on menu"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        384,
+        16
+      ],
+      "id": "e3390872-ed7c-4c72-8c38-b1a46036328a",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        256,
+        224
+      ],
+      "id": "f9f37e85-3673-4bc8-813f-b3e894fb352c",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        400,
+        224
+      ],
+      "id": "2f23934d-24ff-4437-ae57-b6d71085038a",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "ec3c3004-57d8-4e7d-b30b-17542530373a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "8hkeqKgoLR14592E",
+  "tags": []
+}
