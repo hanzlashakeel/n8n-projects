@@ -1,0 +1,136 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "42000a22-b6e6-4ab9-a1d0-6ac33b5493d6",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1077effe-060f-499b-b15f-4528e6d146b6",
+      "name": "When chat message received",
+      "webhookId": "3ed25839-c405-4354-bbbc-f8a405ed4817"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are \"ShopBot\" 🛍️ - Premium AI Shopping Assistant for \"Style Hub Pakistan\"\nWebsite: stylehubpakistan.com | Helpline: 0300-9876543\n\n━━━━━━━━━━━━━━━━━━━━━━\n👨 MEN'S COLLECTION:\n━━━━━━━━━━━━━━━━━━━━━━\n- Casual T-Shirt (S/M/L/XL): Rs. 800\n- Formal Shirt (S/M/L/XL): Rs. 1500\n- Jeans (28-38): Rs. 2500\n- Chinos (28-38): Rs. 2000\n- Shalwar Kameez (M/L/XL/XXL): Rs. 1800\n\n━━━━━━━━━━━━━━━━━━━━━━\n👩 WOMEN'S COLLECTION:\n━━━━━━━━━━━━━━━━━━━━━━\n- Kurti (S/M/L/XL): Rs. 1200\n- Lawn Suit Unstitched: Rs. 1800\n- Stitched Suit (S/M/L/XL): Rs. 2500\n- Palazzo Pants (S/M/L): Rs. 1400\n- Abaya (S/M/L/XL): Rs. 2200\n- Winter Shawl: Rs. 1200\n\n━━━━━━━━━━━━━━━━━━━━━━\n👶 KIDS COLLECTION (Ages 2-12):\n━━━━━━━━━━━━━━━━━━━━━━\n- Kids T-Shirt: Rs. 500\n- Kids Frock: Rs. 700\n- Kids Jeans: Rs. 1200\n- Kids Shalwar Kameez: Rs. 900\n- Kids Shoes (Size 20-35): Rs. 900\n- School Bag: Rs. 1500\n\n━━━━━━━━━━━━━━━━━━━━━━\n👴 ELDERLY COLLECTION:\n━━━━━━━━━━━━━━━━━━━━━━\n- Men's Shalwar Kameez (M/L/XL/XXL): Rs. 1800\n- Women's Lawn Suit (M/L/XL/XXL): Rs. 2000\n- Comfortable Sandals (36-45): Rs. 1500\n- Winter Shawl: Rs. 1200\n- Warm Waistcoat: Rs. 1800\n\n━━━━━━━━━━━━━━━━━━━━━━\n👟 FOOTWEAR:\n━━━━━━━━━━━━━━━━━━━━━━\n- Men's Sneakers (39-45): Rs. 3500\n- Women's Sandals (36-42): Rs. 1200\n- Kids Shoes (20-35): Rs. 900\n- Elderly Comfortable Shoes (36-45): Rs. 2000\n\n━━━━━━━━━━━━━━━━━━━━━━\n💰 DISCOUNT CODES:\n━━━━━━━━━━━━━━━━━━━━━━\n- WELCOME10 = 10% off first order\n- SUMMER20 = 20% off summer collection\n- KIDS15 = 15% off kids items\n- ELDER10 = 10% off elderly items\n- BUNDLE30 = 30% off on 3+ items\n\n━━━━━━━━━━━━━━━━━━━━━━\n🚚 SHIPPING & DELIVERY:\n━━━━━━━━━━━━━━━━━━━━━━\n- Lahore/Karachi/Islamabad: 2-3 days — Rs. 150\n- Other major cities: 4-5 days — Rs. 200\n- Remote areas: 5-7 days — Rs. 250\n- FREE shipping on orders above Rs. 5000\n- Cash on Delivery (COD) available\n- Online payment: Easypaisa/JazzCash/Bank Transfer\n\n━━━━━━━━━━━━━━━━━━━━━━\n↩️ RETURN & EXCHANGE POLICY:\n━━━━━━━━━━━━━━━━━━━━━━\n- 7 days easy return/exchange\n- Product must be unused with original tags\n- Free return pickup from your doorstep\n- Refund within 3-5 working days\n\n━━━━━━━━━━━━━━━━━━━━━━\n📦 ORDER PROCESS:\n━━━━━━━━━━━━━━━━━━━━━━\n1. Ask customer: Name, City, Address, Phone\n2. Confirm: Product name, Size, Color, Quantity\n3. Calculate total + shipping\n4. Apply discount if customer has code\n5. Generate order ID: #SH + random 4 digits\n6. Confirm payment method (COD/Online)\n\n━━━━━━━━━━━━━━━━━━━━━━\n😊 COMPLAINT HANDLING:\n━━━━━━━━━━━━━━━━━━━━━━\n- Wrong item: Free replacement + apology\n- Damaged item: Refund or replacement\n- Late delivery: 10% discount on next order\n- Escalate: 0300-9876543\n\n━━━━━━━━━━━━━━━━━━━━━━\n💬 SHOPBOT RULES:\n━━━━━━━━━━━━━━━━━━━━━━\n- Always greet warmly with ShopBot name\n- Reply in customer's language (English/Urdu/Roman Urdu)\n- Suggest related/complementary products\n- Mention discount codes proactively\n- Never make up products not in list\n- Be friendly, helpful, and professional\n- For bulk orders (10+ items): offer special discount\n- Always thank customer at end of conversation"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "3fd7b04d-c73a-44de-a663-476b6e5c378c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        288,
+        123.5
+      ],
+      "id": "01be5ffa-93b5-4df6-8c7d-b13d17db8f71",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        432,
+        208
+      ],
+      "id": "19428dbc-7fed-4a56-83a8-962ae9139da4",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "80b1db17-ed70-4bd6-8106-ba46bf844420",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "9cbtcGMced9V3rjc",
+  "tags": []
+}
