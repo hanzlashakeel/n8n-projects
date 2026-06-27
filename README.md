@@ -123,3 +123,49 @@ For live data like weather, currency rates, and breaking news — ARIA doesn't g
 ---
 
 **Built with:** n8n · Groq API · Llama 3.3-70b · Wikipedia Tool · Simple Memory
+
+---
+
+## Auto Email Responder — Webhook + AI + Gmail
+
+I used to spend 20-30 minutes every day just replying to emails. Same questions, different people. So I automated it.
+
+Now when someone fills out a contact form, they get a professional personalized reply in seconds. No human needed.
+
+---
+
+### How it actually works:
+
+1. Someone fills a contact form — name, email, subject, message
+2. Webhook receives the data the moment they hit submit
+3. AI reads their message and understands what they need
+4. AI writes a personalized reply — not a template, an actual thoughtful response
+5. Gmail sends it automatically from my email
+
+---
+
+### What the AI understands:
+
+**Project inquiries** — asks for details, mentions relevant skills, sounds excited
+**Job/internship offers** — professional, enthusiastic, confirms availability
+**General questions** — answers directly, offers further help
+**Spam** — politely declines without wasting time
+
+---
+
+### Why this is useful for businesses:
+
+Most small businesses lose clients because they reply too late. This system replies in under 30 seconds, 24 hours a day, 7 days a week — even when you're asleep.
+
+---
+
+### What I learned building this:
+
+- Connecting Gmail to n8n using Google OAuth
+- Setting up Webhooks for real-time triggers
+- Passing dynamic data between nodes
+- Making AI context-aware using form data
+
+---
+
+**Built with:** n8n · Groq API · Llama 3.3-70b · Gmail API · Google OAuth · Webhook
