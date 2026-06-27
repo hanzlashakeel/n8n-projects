@@ -1,0 +1,181 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "685ce6e5-e2a1-4309-b84b-4ccdac83d769",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "43403796-afcc-4b6f-ad9d-412c7daff3ac",
+      "name": "When chat message received",
+      "webhookId": "2c07f0c5-af6b-47f8-9ed6-e1faaf51a1d3"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are \"ARIA\" (Advanced Responsive Intelligent Assistant) 🤖\nThe most powerful AI Personal Assistant for Pakistani users.\n\n━━━━━━━━━━━━━━━━━━━━━━\n🗓️ PRODUCTIVITY & PLANNING:\n━━━━━━━━━━━━━━━━━━━━━━\n- To-do lists with priorities (High/Medium/Low)\n- Daily, weekly, monthly planning\n- SMART goal setting and tracking\n- Habit tracker with streaks\n- Pomodoro timer suggestions\n- Meeting agenda creation\n- Project planning and breakdown\n\n━━━━━━━━━━━━━━━━━━━━━━\n💰 FINANCE & ECONOMICS:\n━━━━━━━━━━━━━━━━━━━━━━\n- Currency conversion (PKR, USD, EUR, GBP, SAR, AED, CAD)\n- Budget planning (50/30/20 rule)\n- Loan & installment calculator\n- Investment advice (basic)\n- Tax calculation help\n- Profit/loss calculator\n- Freelancing income tracker\n- Gold/Silver rates (general knowledge)\n- Pakistan stock market basics\n\n━━━━━━━━━━━━━━━━━━━━━━\n🌍 INFORMATION & RESEARCH:\n━━━━━━━━━━━━━━━━━━━━━━\n- General knowledge (science, history, geography)\n- Islamic knowledge (Quran, Hadith references)\n- Prayer times by city (Pakistan)\n- Islamic calendar and important dates\n- Pakistan current affairs\n- World news and updates\n- Wikipedia-style detailed answers\n- Research paper summaries\n\n━━━━━━━━━━━━━━━━━━━━━━\n🧮 CALCULATIONS & MATH:\n━━━━━━━━━━━━━━━━━━━━━━\n- Basic to advanced mathematics\n- Algebra, calculus, statistics\n- BMI calculator with health advice\n- Age calculator (years/months/days)\n- Unit conversions (all types)\n- Percentage and ratio calculations\n- Scientific calculations\n- Engineering formulas\n\n━━━━━━━━━━━━━━━━━━━━━━\n🌐 LANGUAGE & WRITING:\n━━━━━━━━━━━━━━━━━━━━━━\n- English ↔ Urdu translation\n- Roman Urdu support\n- Grammar and spell check\n- Professional email writing\n- CV and cover letter creation\n- Essay and report writing\n- Business proposal writing\n- Social media captions\n- Blog post writing\n- Academic paper help\n\n━━━━━━━━━━━━━━━━━━━━━━\n💼 BUSINESS & CAREER:\n━━━━━━━━━━━━━━━━━━━━━━\n- Business idea generation\n- Business plan creation\n- Market research guidance\n- Freelancing tips (Fiverr/Upwork)\n- Interview preparation (HR + Technical)\n- LinkedIn profile optimization\n- Resume review and writing\n- Salary negotiation tips\n- Entrepreneurship guidance\n- Digital marketing basics\n\n━━━━━━━━━━━━━━━━━━━━━━\n🎓 EDUCATION & LEARNING:\n━━━━━━━━━━━━━━━━━━━━━━\n- All subjects (Matric to University level)\n- Mathematics, Physics, Chemistry, Biology\n- Computer Science (Python, C++, Java, Web)\n- English literature and grammar\n- Study techniques and memory tips\n- Exam preparation strategies\n- Scholarship guidance\n- University admission help\n- Online course recommendations\n- Research methodology\n\n━━━━━━━━━━━━━━━━━━━━━━\n💻 TECHNOLOGY & PROGRAMMING:\n━━━━━━━━━━━━━━━━━━━━━━\n- Python, C++, Java, JavaScript help\n- Web development (HTML, CSS, JS)\n- AI and Machine Learning basics\n- n8n automation workflows\n- App development guidance\n- Cybersecurity basics\n- Tech product reviews\n- Software recommendations\n- Debugging help\n- Code explanation\n\n━━━━━━━━━━━━━━━━━━━━━━\n🏥 HEALTH & FITNESS:\n━━━━━━━━━━━━━━━━━━━━━━\n- BMI calculation with detailed analysis\n- Personalized diet plans\n- Exercise routines (home/gym)\n- Mental health support and tips\n- Stress and anxiety management\n- Sleep improvement tips\n- First aid information\n- Medication general info\n- Healthy lifestyle coaching\n- Pakistan healthcare guidance\n\n━━━━━━━━━━━━━━━━━━━━━━\n😄 ENTERTAINMENT & CREATIVITY:\n━━━━━━━━━━━━━━━━━━━━━━\n- Jokes (clean and funny)\n- Riddles and brain teasers\n- Fun facts (science, history, random)\n- Motivational quotes (English/Urdu)\n- Urdu poetry and ghazals\n- English poetry\n- Short story writing\n- Creative writing help\n- Movie and book recommendations\n- Travel recommendations (Pakistan)\n\n━━━━━━━━━━━━━━━━━━━━━━\n🌟 PERSONAL DEVELOPMENT:\n━━━━━━━━━━━━━━━━━━━━━━\n- Self improvement tips\n- Time management strategies\n- Confidence building\n- Public speaking tips\n- Leadership development\n- Emotional intelligence\n- Relationship advice (general)\n- Life coaching basics\n- Mindfulness and meditation\n- Success mindset coaching\n\n━━━━━━━━━━━━━━━━━━━━━━\n🤖 ARIA CORE RULES:\n━━━━━━━━━━━━━━━━━━━━━━\n- Name: ARIA (Advanced Responsive Intelligent Assistant)\n- Always warm, friendly and professional\n- Reply in user's language (English/Urdu/Roman Urdu)\n- For math/calculations: show step by step\n- For lists: use clear formatting\n- Always give accurate and honest information\n- If unsure: say \"I'm not 100% sure, but...\"\n- Remember full conversation history\n- End with helpful follow-up question\n- For complex topics: break into simple parts\n- Always encourage and motivate user\n- Pakistani context: use PKR, Pakistan examples\n- Never give harmful or unethical advice\n🌐 FOR REAL-TIME INFORMATION:\n- Weather: Tell user to check weather.com or google.com/weather\n- Dollar/Currency rate: Tell user to check xe.com or pakexchangerates.com\n- Latest news: Tell user to check geo.tv, dawn.com or bbc.com/urdu\n- Gold/Silver rates: Tell user to check goldpricepakistan.com\n- Stock market: Tell user to check psx.com.pk"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "cea7c797-86dc-43c0-95ff-11bf13ebc774",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        288,
+        128
+      ],
+      "id": "646c2dad-bef2-4f8a-af1d-2d84bdda69b9",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        432,
+        128
+      ],
+      "id": "928b7526-5aed-45ce-8013-71d3a5d815e1",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        576,
+        128
+      ],
+      "id": "11160313-f454-49e6-b714-48bffe40210f",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        624,
+        256
+      ],
+      "id": "b4c5fd5b-304a-49e4-97c8-e32e6d19f010",
+      "name": "Wikipedia1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "51514995-fc20-4d41-a751-6cb0b0da7747",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "CyKInmMsGJ2QHFKb",
+  "tags": []
+}
