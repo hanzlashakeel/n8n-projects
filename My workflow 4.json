@@ -1,0 +1,143 @@
+{
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on this form submission, write a professional personalized email reply.\nName: {{ $json.name }}\nQuery: {{ $json.message }}\nSign off as: Hanzla Shakeel | AI Automation Developer",
+        "options": {
+          "systemMessage": "You are a professional email assistant for Hanzla Shakeel — AI Automation Developer.\n\nYOUR JOB:\n\nRead the incoming email and write a perfect reply.\n\nRULES:\n\n- Reply in same language as the email (English/Urdu)\n\n- Always be polite and professional\n\n- Keep reply concise — no unnecessary words\n\n- Address the sender by their name if available\n\n- Sign off as \"Hanzla Shakeel | AI Automation Developer\"\n\nEMAIL TYPES & HOW TO HANDLE:\n\n1. JOB/INTERNSHIP INQUIRY:\n\n- Thank them for reaching out\n\n- Express interest\n\n- Mention skills: Python, n8n, AI Automation\n\n- Ask for next steps\n\n2. CLIENT PROJECT INQUIRY:\n\n- Thank them\n\n- Ask about project details\n\n- Mention availability\n\n- Provide professional response\n\n3. GENERAL QUESTION:\n\n- Answer helpfully and concisely\n\n- Offer further assistance\n\n4. SPAM/IRRELEVANT:\n\n- Write: \"Thank you for your email. This does not appear relevant to my work.\"\n\n5. INTERVIEW INVITATION:\n\n- Thank them enthusiastically\n\n- Confirm availability\n\n- Express excitement about opportunity\n\nSIGNATURE:\n\nBest regards,\n\nHanzla Shakeel\n\nAI Automation Developer | Python | n8n\n\nUET Lahore\n\nhanzlashakeel49@gmail.com"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        256,
+        0
+      ],
+      "id": "cdb205ce-2006-4a70-bc82-60381e22e0a8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        272,
+        144
+      ],
+      "id": "aca27126-4df2-4ccb-a869-b52127d9a21b",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Webhook').item.json.email }}",
+        "subject": "={{ $('Webhook').item.json.subject }}",
+        "emailType": "text",
+        "message": "={{ $('AI Agent').item.json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        608,
+        0
+      ],
+      "id": "86de318c-fb4b-4e4e-a34d-01ca4660c86a",
+      "name": "Send a message",
+      "webhookId": "ba4e710b-3472-4a60-b901-4314c4cd2f84",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "0g9T9t6WJl4w9SoN",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "375bc39c-2c55-4400-9f26-60e9f30f0cb0",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        0
+      ],
+      "id": "39bbcf9b-81f0-4a37-be63-95eccf8f2ce9",
+      "name": "Webhook",
+      "webhookId": "375bc39c-2c55-4400-9f26-60e9f30f0cb0"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "Ahmed Ali",
+          "email": "test@gmail.com",
+          "subject": "Project Inquiry",
+          "message": "I need an AI chatbot for my business"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "91b45027-7c1d-40ac-9408-13cec25763a2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "WI6nB2TnNFFW1wdF",
+  "tags": []
+}
