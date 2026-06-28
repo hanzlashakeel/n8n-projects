@@ -205,3 +205,84 @@ Before this, leads would get lost in emails. Now the business owner can open Goo
 **Full updated stack:** n8n · Groq API · Llama 3.3-70b · Gmail API · Google Sheets API · Google Drive API · Google OAuth · Webhook
 
 ---
+
+## WhatsApp AI Bot — Hanzla Bot
+
+Most businesses lose customers because they reply too late on WhatsApp. I built HanzBot to fix that — an AI that replies instantly, 24/7, like a real person.
+
+This was the hardest project so far. WhatsApp doesn't just let you plug anything in. You need a Meta Developer account, a verified business portfolio, OAuth tokens, webhook configuration, and approved phone numbers. Took time to figure out but got it working.
+
+---
+
+### How it works:
+
+1. Customer sends a WhatsApp message
+2. Webhook catches it the moment it arrives
+3. AI reads the message — understands the language, tone, and intent
+4. AI writes a personalized reply — short, conversational, WhatsApp style
+5. Reply lands in customer's WhatsApp in seconds
+
+No human needed. No delays. No missed messages.
+
+---
+
+### What makes HanzBot different:
+
+Most WhatsApp bots reply with fixed templates — boring, robotic, and unhelpful. HanzBot reads the actual message and responds to exactly what was said. Every reply is generated fresh by the AI.
+
+If someone writes in Urdu, it replies in Urdu. If someone writes in Roman Urdu, it matches that too. If someone is angry, it stays calm and empathetic. If someone asks a question, it actually answers it.
+
+---
+
+### What HanzBot handles:
+
+**Customer Support:**
+- Product and service inquiries
+- Order status questions
+- Complaint handling with empathy
+- Escalation to human when needed
+
+**Information:**
+- General knowledge questions
+- Business hours, location, pricing
+- Booking and appointment requests
+
+**Language:**
+- English, Urdu, Roman Urdu
+- Switches automatically based on customer
+
+**Personal Help:**
+- Calculations and conversions
+- Translation between languages
+- General advice and guidance
+
+---
+
+### The technical side:
+
+Getting WhatsApp Business API working from scratch required:
+- Creating a Meta Developer account and app
+- Setting up a verified Business Portfolio
+- Generating and managing OAuth access tokens
+- Configuring webhooks for real-time message delivery
+- Setting up WhatsApp Business Cloud node in n8n
+- Understanding Meta's 24-hour messaging window policy
+
+None of this was straightforward. Every step had its own setup process. But once it clicked, the whole thing came together.
+
+---
+
+### What I learned:
+
+- How WhatsApp Business API actually works behind the scenes
+- Meta's messaging policies and template vs free-form message rules
+- OAuth token management for third-party API access
+- Real-time webhook event handling
+- Building conversational AI that feels human, not robotic
+
+---
+
+**Built with:** n8n · Groq API · Llama 3.3-70b · WhatsApp Business Cloud API · Meta Developer Platform · Webhook
+
+---
+
