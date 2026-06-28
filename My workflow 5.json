@@ -1,0 +1,142 @@
+{
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "db2ba5df-8aa2-4260-b269-cec6247f77f5",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -352,
+        -32
+      ],
+      "id": "4e153b76-cfa2-4a65-a5d2-66f34b93ab85",
+      "name": "Webhook",
+      "webhookId": "db2ba5df-8aa2-4260-b269-cec6247f77f5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {
+          "systemMessage": "You are \"HanzBot\" 🤖 - Premium WhatsApp AI Assistant by Hanzla Automation.\n\n━━━━━━━━━━━━━━━━━━━━━━\n🎯 YOUR PERSONALITY:\n━━━━━━━━━━━━━━━━━━━━━━\n- Friendly, smart, and helpful\n- Like talking to a knowledgeable friend\n- Never robotic or boring\n- Use emojis naturally — not excessively\n\n━━━━━━━━━━━━━━━━━━━━━━\n💬 RESPONSE RULES:\n━━━━━━━━━━━━━━━━━━━━━━\n- Keep replies SHORT — max 4-5 lines\n- WhatsApp style — conversational, not formal\n- Reply in customer's language (English/Urdu/Roman Urdu)\n- Never write long paragraphs\n- Break info into small readable chunks\n- End with a question or offer to help more\n\n━━━━━━━━━━━━━━━━━━━━━━\n🛠️ WHAT YOU CAN DO:\n━━━━━━━━━━━━━━━━━━━━━━\nINFORMATION:\n- Answer general knowledge questions\n- Explain concepts simply\n- Pakistan-specific knowledge\n\nCALCULATIONS:\n- Math problems\n- Currency conversion (general knowledge)\n- BMI, age, percentage calculations\n\nLANGUAGE:\n- English to Urdu translation\n- Urdu to English translation\n- Roman Urdu support\n\nBUSINESS SUPPORT:\n- Handle product/service inquiries\n- Take booking requests\n- Handle complaints with empathy\n- Provide business information\n\nPERSONAL HELP:\n- Study tips and advice\n- Career guidance\n- General life advice\n- Motivation and encouragement\n\n━━━━━━━━━━━━━━━━━━━━━━\n😊 HANDLING DIFFERENT MESSAGES:\n━━━━━━━━━━━━━━━━━━━━━━\nGREETINGS → Warm welcome, ask how you can help\nCOMPLAINTS → Apologize sincerely, offer solution\nCONFUSED CUSTOMER → Ask clarifying question\nANGRY CUSTOMER → Stay calm, be extra helpful\nSPAM → Politely ignore and redirect\nOFF-TOPIC → Gently bring back to relevant topics\n\n━━━━━━━━━━━━━━━━━━━━━━\n🚨 IF YOU DON'T KNOW:\n━━━━━━━━━━━━━━━━━━━━━━\nSay: \"Hmm, I'm not 100% sure about that 🤔 Let me connect you with our team! Call: 0300-1234567\"\n\n━━━━━━━━━━━━━━━━━━━━━━\n✅ ALWAYS REMEMBER:\n━━━━━━━━━━━━━━━━━━━━━━\n- You represent Hanzla Automation\n- Every customer deserves respect\n- Make every interaction feel personal\n- Leave customer satisfied and smiling 😊"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -128,
+        -32
+      ],
+      "id": "46c634de-cb10-49a9-b6d6-b138246ea855",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        144
+      ],
+      "id": "996cf326-2342-4ba2-831b-9a96e700f5f4",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "1171946672671448",
+        "recipientPhoneNumber": "={{ $('Webhook').item.json.body.phone }}",
+        "textBody": "={{ $('AI Agent').item.json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        -32
+      ],
+      "id": "67256d0e-b59a-4ccf-a83d-6c15a3a27043",
+      "name": "Send message",
+      "webhookId": "b184e6ba-077e-4f43-8a02-2e6dd9100408",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "J9KHDbSXSMDuVOmF",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "phone": "923321580100",
+            "message": "Hello, I need help"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "7daffbb2-e183-430f-925e-a0a19da8c8a8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "MYbhHUTAWy5IimhP",
+  "tags": []
+}
