@@ -169,3 +169,39 @@ Most small businesses lose clients because they reply too late. This system repl
 ---
 
 **Built with:** n8n · Groq API · Llama 3.3-70b · Gmail API · Google OAuth · Webhook
+
+---
+
+### Update — Lead Capture System Added
+
+Originally this workflow just replied to emails. But then I realized — what happens to all those inquiries? They just disappear into your inbox. So I added Google Sheets to fix that.
+
+Now every single lead is captured automatically. The moment someone submits the form, three things happen at the same time:
+- Their details are saved to Google Sheets permanently
+- AI reads their message and writes a personalized reply
+- Gmail sends the reply within seconds
+
+**What gets saved in Google Sheets:**
+
+| Field | Example |
+|-------|---------|
+| Name | Ahmed Ali |
+| Email | ahmed@gmail.com |
+| Subject | Project Inquiry |
+| Message | I need an AI chatbot for my business |
+| Date | 2026-06-28 07:20 |
+
+**Why this matters for businesses:**
+
+Before this, leads would get lost in emails. Now the business owner can open Google Sheets any time and see every person who ever reached out — their name, what they wanted, and when they contacted. No CRM software needed. No manual data entry. Just automatic.
+
+**What I learned adding this:**
+
+- Enabling Google Drive + Sheets APIs in Google Cloud Console
+- OAuth credential reuse across multiple Google services
+- Mapping dynamic webhook data to spreadsheet columns
+- Building multi-step workflows where each node passes data to the next
+
+**Full updated stack:** n8n · Groq API · Llama 3.3-70b · Gmail API · Google Sheets API · Google Drive API · Google OAuth · Webhook
+
+---
