@@ -286,3 +286,118 @@ None of this was straightforward. Every step had its own setup process. But once
 
 ---
 
+## Appointment Booking Bot — BookBot
+
+Clinics, salons, and service businesses lose customers every day because nobody answered the phone or replied to WhatsApp in time. BookBot fixes that permanently.
+
+It's not just a chatbot that collects a form. It's a full AI receptionist that has a real conversation, understands what the customer needs, and handles the entire booking process from start to finish — while saving everything to Google Sheets automatically.
+
+---
+
+### The problem it solves:
+
+A typical clinic receives 20-30 appointment requests daily on WhatsApp. A receptionist has to:
+- Reply to each message manually
+- Check availability
+- Confirm the appointment
+- Note it down somewhere
+- Send a confirmation
+
+That's hours of repetitive work. BookBot does all of it in seconds.
+
+---
+
+### How the full flow works:
+
+1. Customer sends a WhatsApp message — "I want to book an appointment"
+2. Webhook catches the message the moment it arrives
+3. BookBot greets the customer warmly and starts collecting details
+4. It asks one question at a time — name, service, date, time, special requests
+5. Once all details are collected, it generates a unique Booking ID
+6. Appointment is saved to Google Sheets with status "Pending"
+7. Customer receives a full confirmation on WhatsApp with all details
+
+Total time from message to confirmation — under 2 minutes.
+
+---
+
+### What BookBot can handle:
+
+**Full Booking Flow:**
+- Collects name, phone, service, date, time, special requests
+- Generates unique booking ID — #CF + 4 digits
+- Sends formatted confirmation with all details
+- Saves everything to Google Sheets automatically
+
+**Service Information:**
+- Lists all available services with duration and fees
+- Shares doctor names and specializations
+- Provides clinic hours — Monday to Saturday
+- Location and parking information
+- Payment methods — Cash, Easypaisa, JazzCash
+
+**Edge Cases:**
+- Slot not available → suggests next available time
+- Emergency symptoms → immediately redirects to emergency services
+- Rescheduling → asks for booking ID and new time
+- Cancellation → explains policy and processes request
+- Walk-in inquiry → explains walk-in vs appointment priority
+
+**Language Intelligence:**
+- Detects customer language automatically
+- Replies in English, Urdu, or Roman Urdu
+- Switches language mid-conversation if customer switches
+- Never feels robotic — always conversational
+
+---
+
+### Google Sheets — Live Booking Dashboard:
+
+Every appointment is recorded in real time:
+
+| Name | Phone | Service | Date | Time | Booking ID | Status |
+|------|-------|---------|------|------|------------|--------|
+| Ahmed Ali | 923321580100 | General Checkup | 2026-07-05 | 10:00 AM | #CF4821 | Pending |
+| Sara Khan | 923001234567 | Dental Cleaning | 2026-07-06 | 2:00 PM | #CF7392 | Pending |
+
+The clinic owner sees every booking the moment it's made. No phone calls needed to check the schedule. Just open Google Sheets.
+
+---
+
+### Why this is valuable for businesses:
+
+- Responds instantly — even at 3 AM
+- Never misses a booking
+- Eliminates manual data entry completely
+- Patients get professional confirmation immediately
+- Owner has full record of all appointments in one place
+- Scales to 100 bookings a day without extra staff
+
+---
+
+### Technical breakdown:
+
+**Webhook** — Receives incoming customer message in real time
+
+**AI Agent (Groq + Llama 3.3)** — Reads the message, understands intent, conducts the booking conversation, generates confirmation
+
+**Google Sheets API** — Appends new row with complete booking details automatically
+
+**WhatsApp Business Cloud API** — Sends confirmation message back to customer
+
+---
+
+### What I learned building this:
+
+- Designing multi-turn conversational AI that asks follow-up questions
+- Extracting structured booking data from natural language
+- Chaining multiple APIs in a single automated workflow
+- Handling edge cases — emergencies, cancellations, rescheduling
+- Building something a real business could actually use today
+
+---
+
+**Built with:** n8n · Groq API · Llama 3.3-70b · WhatsApp Business Cloud API · Google Sheets API · Google Drive API · Meta Developer Platform · Webhook
+
+---
+
