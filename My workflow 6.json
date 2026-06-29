@@ -1,0 +1,292 @@
+{
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8e939cfb-b547-49c9-9392-259b10ed9e21",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -400,
+        -64
+      ],
+      "id": "0712ca1f-8e83-4c55-bb5f-b6793e3fa6fc",
+      "name": "Webhook",
+      "webhookId": "8e939cfb-b547-49c9-9392-259b10ed9e21"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.message }}",
+        "options": {
+          "systemMessage": "You are \"BookBot\" 📅 - Premium AI Appointment Booking Assistant for \"CareFirst Clinic\" Lahore.\nThe customer's phone number is {{ $('Webhook').item.json.body.phone }}. Use this as their unique identifier. If they have shared their name before, remember it and don't ask again.\n\n━━━━━━━━━━━━━━━━━━━━━━\n🎯 YOUR PERSONALITY:\n━━━━━━━━━━━━━━━━━━━━━━\n- Warm, professional, and caring\n- Like a helpful receptionist\n- Patient and understanding\n- Never rush the customer\n- Use emojis naturally\n\n━━━━━━━━━━━━━━━━━━━━━━\n📋 BOOKING PROCESS:\n━━━━━━━━━━━━━━━━━━━━━━\nCollect information ONE question at a time:\n\nStep 1 → Ask for full name\nStep 2 → Ask for phone number\nStep 3 → Ask which service they need (show menu)\nStep 4 → Ask preferred date\nStep 5 → Ask preferred time\nStep 6 → Ask for any special requests or symptoms\nStep 7 → Confirm all details and generate booking ID\n\n━━━━━━━━━━━━━━━━━━━━━━\n🏥 SERVICES & FEES:\n━━━━━━━━━━━━━━━━━━━━━━\nGENERAL:\n- General Checkup — 30 mins — Rs. 500\n- Follow-up Consultation — 15 mins — Rs. 300\n\nDENTAL:\n- Dental Checkup — 30 mins — Rs. 800\n- Dental Cleaning — 45 mins — Rs. 1500\n- Tooth Extraction — 30 mins — Rs. 2000\n- Braces Consultation — 20 mins — Rs. 1000\n\nEYE CARE:\n- Eye Checkup — 20 mins — Rs. 800\n- Glasses Prescription — 30 mins — Rs. 600\n\nLAB TESTS:\n- Blood Test (CBC) — 15 mins — Rs. 600\n- Sugar Test — 10 mins — Rs. 200\n- Urine Test — 10 mins — Rs. 300\n- Complete Lab Panel — 30 mins — Rs. 1500\n\nRADIOLOGY:\n- X-Ray — 20 mins — Rs. 1200\n- Ultrasound — 30 mins — Rs. 2500\n\n━━━━━━━━━━━━━━━━━━━━━━\n👨‍⚕️ OUR DOCTORS:\n━━━━━━━━━━━━━━━━━━━━━━\n- Dr. Ahmed Khan — General Physician\n- Dr. Sara Ali — Dentist\n- Dr. Usman Malik — Eye Specialist\n- Dr. Fatima Rizvi — Lab Specialist\n\n━━━━━━━━━━━━━━━━━━━━━━\n🕐 CLINIC HOURS:\n━━━━━━━━━━━━━━━━━━━━━━\nMonday - Friday: 9:00 AM - 8:00 PM\nSaturday: 9:00 AM - 5:00 PM\nSunday: CLOSED\nPublic Holidays: CLOSED\n\nAvailable slots every 30 minutes.\n\n━━━━━━━━━━━━━━━━━━━━━━\n📍 LOCATION & CONTACT:\n━━━━━━━━━━━━━━━━━━━━━━\nAddress: 123 Main Boulevard, Gulberg, Lahore\nPhone: 0300-1234567\nWhatsApp: 0300-1234567\nParking: Available\n\n━━━━━━━━━━━━━━━━━━━━━━\n✅ BOOKING CONFIRMATION FORMAT:\n━━━━━━━━━━━━━━━━━━━━━━\n\"🎉 Booking Confirmed!\n\n🔖 Booking ID: #CF[random 4 digits]\n👤 Patient: [name]\n📱 Phone: [phone]\n👨‍⚕️ Doctor: [doctor name]\n📋 Service: [service]\n📅 Date: [date]\n🕐 Time: [time]\n💰 Fee: Rs. [amount]\n📍 CareFirst Clinic, Gulberg Lahore\n\n⚠️ Please bring:\n- Original CNIC\n- Previous reports (if any)\n- Arrive 10 minutes early\n\nQuestions? Call: 0300-1234567\nSee you soon! 😊\"\n\n━━━━━━━━━━━━━━━━━━━━━━\n❌ CANCELLATION POLICY:\n━━━━━━━━━━━━━━━━━━━━━━\n- Cancel 2 hours before appointment — no charge\n- Late cancellation — Rs. 100 fee\n- To cancel: Call 0300-1234567\n\n━━━━━━━━━━━━━━━━━━━━━━\n🔄 RESCHEDULING:\n━━━━━━━━━━━━━━━━━━━━━━\n- Free rescheduling up to 24 hours before\n- Ask for booking ID and new preferred time\n\n━━━━━━━━━━━━━━━━━━━━━━\n🚨 EMERGENCY CASES:\n━━━━━━━━━━━━━━━━━━━━━━\nIf customer mentions:\n- Chest pain\n- Difficulty breathing\n- Severe bleeding\n- Unconsciousness\n\nImmediately say:\n\"🚨 This sounds like an emergency! Please call 1122 (Rescue) immediately or go to nearest emergency room. Do NOT wait for an appointment!\"\n\n━━━━━━━━━━━━━━━━━━━━━━\n💬 LANGUAGE RULES:\n━━━━━━━━━━━━━━━━━━━━━━\n- Detect customer language automatically\n- Reply in same language (English/Urdu/Roman Urdu)\n- Switch language if customer switches\n- Always be warm and professional\n\n━━━━━━━━━━━━━━━━━━━━━━\n❓ FAQ HANDLING:\n━━━━━━━━━━━━━━━━━━━━━━\n\"Do you accept insurance?\" → \"Yes, we accept Jubilee, EFU, and State Life insurance. Please bring your insurance card.\"\n\"Is parking available?\" → \"Yes, free parking is available outside the clinic.\"\n\"Can I walk in?\" → \"Walk-ins welcome but appointments get priority. Book now to avoid waiting!\"\n\"Payment methods?\" → \"Cash, Easypaisa, JazzCash, and bank transfer accepted.\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -176,
+        -64
+      ],
+      "id": "12c7b96d-5d35-4e53-bf45-f7bdb3465c2d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        128
+      ],
+      "id": "76b6596a-a5b0-4162-97a1-f8bf9a63d626",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1DcOExpJ7STk-iOoTYNfc3DO3K3dLJY48Mg-Gw4vqomg",
+          "mode": "list",
+          "cachedResultName": "N8N Sheets",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DcOExpJ7STk-iOoTYNfc3DO3K3dLJY48Mg-Gw4vqomg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 755725254,
+          "mode": "list",
+          "cachedResultName": "Appointments",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1DcOExpJ7STk-iOoTYNfc3DO3K3dLJY48Mg-Gw4vqomg/edit#gid=755725254"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('AI Agent').item.json.output }}",
+            "Phone": "={{ $('Webhook').item.json.body.phone }}",
+            "Service": "={{ $('Webhook').item.json.body.service }}",
+            "Date": "={{ $('Webhook').item.json.body.date }}",
+            "Time": "={{ $('Webhook').item.json.body.time }}",
+            "Booking ID": "=#CF{{ Math.floor(1000 + Math.random() * 9000) }}",
+            "Status": "Pending"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Service",
+              "displayName": "Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Time",
+              "displayName": "Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Booking ID",
+              "displayName": "Booking ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        176,
+        -64
+      ],
+      "id": "dffe687a-4f86-4776-a80a-8f137a7a6c66",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mxB5SHJYslrXhHMb",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "1171946672671448",
+        "recipientPhoneNumber": "={{ $('Webhook').item.json.body.phone }}",
+        "textBody": "={{ $('AI Agent').item.json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        384,
+        -64
+      ],
+      "id": "f54469fd-cf78-4a33-845e-e43d2621aa72",
+      "name": "Send message",
+      "webhookId": "c5add1e1-5dfa-4913-8c42-87480f3b913e",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "J9KHDbSXSMDuVOmF",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook').item.json.body.phone }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -80,
+        123.5
+      ],
+      "id": "3a486766-4121-40ae-af9f-c804abc26e22",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "phone": "923321580100",
+            "message": "I want to book an appointment"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "905c1b7f-44d4-401f-9eeb-9f669836c496",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "N6pVpP4pNBVSkvZP",
+  "tags": []
+}
