@@ -397,7 +397,62 @@ The clinic owner sees every booking the moment it's made. No phone calls needed 
 
 ---
 
-**Built with:** n8n · Groq API · Llama 3.3-70b · WhatsApp Business Cloud API · Google Sheets API · Google Drive API · Meta Developer Platform · Webhook
+# 🤖 AI PDF Summarizer Bot
+> Intelligent PDF analysis powered by n8n + Groq AI
+
+[![n8n](https://img.shields.io/badge/Built%20with-n8n-orange)](https://n8n.io)
+[![Groq](https://img.shields.io/badge/AI-Groq%20llama3-blue)](https://groq.com)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+---
+
+## 📁 Files
+
+| File | Description |
+|------|-------------|
+| `My workflow 7.json` | Complete n8n workflow — ready to import |
+| `test.html` | Browser UI for PDF upload & testing |
+
+---
+
+## ⚡ Quick Setup
+
+# 1. Clone repo
+git clone https://github.com/hanzlashakeel/n8n-projects
+
+# 2. Import workflow
+Open n8n → Import → Select My workflow 7.json
+
+# 3. Add Groq API Key
+Groq Chat Model node → Credentials → Add API Key
+
+# 4. Run test
+Open test.html in browser → Upload PDF → Done!
+
+---
+
+## 📊 Output Format
+
+📋 SUMMARY   → 2-3 line overview
+🔑 KEY POINTS → Bullet-point main ideas
+📌 DETAILS   → In-depth analysis
+⚠️ LIMITATIONS → Gaps in the document
+
+---
+
+## 🌐 Supported Languages
+- ✅ English
+- ✅ Urdu
+
+## 👨‍💻 Author
+**Hanzla Shakeel** — UET Lahore CS
+GitHub: [@hanzlashakeel](https://github.com/hanzlashakeel/n8n-projects)
+
+---
+
+⭐ Star this repo if it helped you!
+
+**Built with:** n8n · Groq API · Llama 3.3-70b
 
 ---
 
