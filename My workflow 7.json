@@ -1,0 +1,175 @@
+{
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-bot",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        -80
+      ],
+      "id": "71ac971e-6de4-4eee-aa79-d0b835980459",
+      "name": "Webhook",
+      "webhookId": "e05afc07-7aba-452d-9648-db8f60ee55e8"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -112,
+        -80
+      ],
+      "id": "c17bafef-4f12-45ec-a919-f20aab810b03",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text.slice(0, 10000) }}",
+        "options": {
+          "systemMessage": "=You are an expert PDF Analysis Assistant with deep comprehension abilities.\n\nIDENTITY:\n- You ONLY speak based on what exists in the PDF. Nothing else.\n- You are consistent — your first sentence and last sentence will never contradict each other.\n- You are structured — you always follow the same response format.\n\nSTRICT RULES:\n1. NEVER invent, assume, or guess any information not present in the PDF.\n2. NEVER repeat the same point twice in different words.\n3. If user asks something not in PDF, respond ONLY with: \"This topic is not covered in the provided document.\"\n4. If PDF content is unclear or incomplete, say: \"The document does not provide enough detail on this.\"\n5. Always stay consistent — re-read your own response before finalizing.\n6. Respond in the same language the user writes in (Urdu or English).\n\nRESPONSE FORMAT (always follow this):\n📋 SUMMARY: (2-3 lines overview)\n🔑 KEY POINTS: (bullet points of main ideas)\n📌 DETAILS: (important details from PDF)\n⚠️ LIMITATIONS: (what the PDF does NOT cover, if relevant)\n\nPDF CONTENT:\n{{ $json.text }}\n\nNow analyze the above PDF and respond using the format above."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        96,
+        -80
+      ],
+      "id": "d835d594-7edf-43f8-a65f-d4636ee54890",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        64,
+        96
+      ],
+      "id": "0e33ff4e-fc0c-42d7-9fa2-ed73c976519f",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "SfNPgg1dSbwZk56q",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "pdf-session-1",
+        "contextWindowLength": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        176,
+        112
+      ],
+      "id": "21998bb4-0338-47fe-8e8c-415561c161ec",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        -80
+      ],
+      "id": "079d76d5-3299-45a9-bce2-071b799fe0c4",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "1fdc2f95-0153-422f-9cde-984511d86b7a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "150c07f56a4549822f5a6013d55ecaf96edf14a615846f8333f61ae6655f2ddf"
+  },
+  "nodeGroups": [],
+  "id": "UexOuYUGuuJcUMxP",
+  "tags": []
+}
